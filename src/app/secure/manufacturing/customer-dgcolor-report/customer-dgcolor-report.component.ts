@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiServicesService } from 'src/app/api-services.service'
+import { API_CONSTANTS } from 'src/app/api-constants'
 
 @Component({
   selector: 'app-customer-dgcolor-report',
@@ -9,8 +10,7 @@ import { ApiServicesService } from 'src/app/api-services.service'
   styleUrls: ['./customer-dgcolor-report.component.css']
 })
 export class CustomerDGColorReportComponent implements OnInit {
-  hideaccordian = true;
-  dummydata: any;
+  API_CONSTANTS = API_CONSTANTS;
   PopupVisible = false;
   customerDGColorReport: any = [];
   queryString: any;
@@ -53,35 +53,32 @@ export class CustomerDGColorReportComponent implements OnInit {
   constructor(private apiSevices: ApiServicesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => { this.queryString = params['id']; });
+    this.route.params.subscribe(params => { this.queryString = atob(params['caseId']); });
     this.selectedStatus = this.statusList[0].name;
     this.getCustomerDGColorReport();
   }
 
   getCustomerDGColorReport() {
     this.loadingVisible = true;
-    if (!this.isAll) {
-      this.apiSevices.getCustomerDGColorReport(this.queryString, '', this.selectedStatus).subscribe((data: any) => {
-        this.customerDGColorReport = data.table;
-        this.consigneeName = data.table[0].consigneeName;
-        this.consigneeCode = data.table[0].consigneeCode;
-        this.caseIdData = "";
-        this.selectedCaseId = "";
-        this.loadingVisible = false;
-      });
-    }
-    else {
-      this.apiSevices.getCustomerDGColorReport(this.selectedCaseId ? this.selectedCaseId : '', this.consigneeCode, this.selectedStatus).subscribe((data: any) => {
-        this.customerDGColorReport = data.table;
-        this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i);
-        this.loadingVisible = false;
-      });
-    }
+    const parmas = {
+      caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
+      consigneeCode: this.isAll ? this.consigneeCode : '',
+      status: this.selectedStatus
+    };
+    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getCustomerDGColorReport, parmas).subscribe((data: any) => {
+      this.customerDGColorReport = data.table;
+      this.consigneeName = data.table[0].consigneeName;
+      this.consigneeCode = data.table[0].consigneeCode;
+      this.caseIdData = "";
+      this.selectedCaseId = "";
+      this.isAll ? this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i) : "";
+      this.loadingVisible = false;
+    });
   }
 
   OnShow(data: any) {
     this.loadingVisible = true;
-    this.apiSevices.getDatabyShadeId(data.shadeId).subscribe((data: any) => {
+    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeId }).subscribe((data: any) => {
       if (data.table) {
         this.recipeAllData = data.table;
         const maxValueOftrail = Math.max(...data.table.map((o: any) => o.predictionOption), 0);
@@ -91,36 +88,36 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.receipeOptionData1 = data.table.filter((par: any) => par.predictionOption == 1);
           this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
           this.Metameric1 = this.receipeOptionData1[0].primaryMetameric + "/" + this.receipeOptionData1[0].secondaryMetameric + "/" + this.receipeOptionData1[0].tertiaryMetameric;
-        } else {
-          this.showOption1RecipeData = false;
         }
+        else
+          this.showOption1RecipeData = false;
 
         if (maxValueOftrail >= 2) {
           this.showOption2RecipeData = true;
           this.receipeOptionData2 = data.table.filter((par: any) => par.predictionOption == 2);
           this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
           this.Metameric2 = this.receipeOptionData2[0].primaryMetameric + "/" + this.receipeOptionData2[0].secondaryMetameric + "/" + this.receipeOptionData2[0].tertiaryMetameric;
-        } else {
-          this.showOption2RecipeData = false;
         }
+        else
+          this.showOption2RecipeData = false;
 
         if (maxValueOftrail >= 3) {
           this.showOption3RecipeData = true;
           this.receipeOptionData3 = data.table.filter((par: any) => par.predictionOption == 3);
           this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
           this.Metameric3 = this.receipeOptionData3[0].primaryMetameric + "/" + this.receipeOptionData3[0].secondaryMetameric + "/" + this.receipeOptionData3[0].tertiaryMetameric;
-        } else {
-          this.showOption3RecipeData = false;
         }
+        else
+          this.showOption3RecipeData = false;
 
         if (maxValueOftrail >= 4) {
           this.showOption4RecipeData = true;
           this.receipeOptionData4 = data.table.filter((par: any) => par.predictionOption == 4);
           this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
           this.Metameric4 = this.receipeOptionData4[0].primaryMetameric + "/" + this.receipeOptionData4[0].secondaryMetameric + "/" + this.receipeOptionData4[0].tertiaryMetameric;
-        } else {
-          this.showOption4RecipeData = false;
         }
+        else
+          this.showOption4RecipeData = false;
       }
       this.labPredictionParameter = data.table1;
       this.loadingVisible = false;
@@ -128,29 +125,17 @@ export class CustomerDGColorReportComponent implements OnInit {
   }
 
   onStatusChanged(event: any) {
-    if (event.value)
-      this.selectedStatus = event.value;
-    else
-      this.selectedStatus = 'All';
-
+    this.selectedStatus = event.value ? event.value : 'All';
     this.getCustomerDGColorReport();
   }
 
   onCaseIdChanged(event: any) {
-    if (event.value)
-      this.selectedCaseId = btoa(event.value);
-    else
-      this.selectedCaseId = '';
-
+    this.selectedCaseId = event.value ? event.value : '';
     this.getCustomerDGColorReport();
   }
 
-  onClickAll(event: any) {
-    if (!this.isAll)
-      this.isAll = true;
-    else
-      this.isAll = false;
-
+  onClickAll() {
+    this.isAll = !this.isAll ? true : false
     this.getCustomerDGColorReport();
   }
 
@@ -158,7 +143,7 @@ export class CustomerDGColorReportComponent implements OnInit {
     this.PopupVisible = true;
     this.shadeId = data.shadeId;
     this.loadingVisible = true;
-    this.apiSevices.getDatabyShadeId(data.shadeId).subscribe((res: any) => {
+    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeId }).subscribe((res: any) => {
       this.Substrate = res.table1;
       this.Process = res.table1[0].process;
       this.DyesRange = res.table1[0].dyesRange;
@@ -170,7 +155,5 @@ export class CustomerDGColorReportComponent implements OnInit {
     });
   }
 
-  PopupClose(event: any) {
-    this.PopupVisible = false;
-  }
+  PopupClose() { this.PopupVisible = false; }
 }

@@ -11,7 +11,7 @@
       [showClearButton]="true" style="float: left; width: 75%;">
     </dx-select-box> -->
     <div class="all-checkbox-section-top">
-      <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll($event)"></dx-check-box>
+      <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll()"></dx-check-box>
       <dx-select-box class="selectcase-id-right" [dataSource]="caseIdData" (onValueChanged)="onCaseIdChanged($event)"
         displayExpr="caseId" valueExpr="caseId" placeholder="Select Case ID" [searchEnabled]="true"
         [showClearButton]="true">
@@ -191,7 +191,7 @@
       [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="PopupVisible">
       <div *dxTemplate="let data of 'titlerapidSearch'" class="costomer-dgcolor-Popup-hdr">
         <h4>Shade ID: {{shadeId}}</h4>
-        <button type="submit" (click)="PopupClose($event)">
+        <button type="submit" (click)="PopupClose()">
           <i class="fa fa-window-close"></i>
         </button>
       </div>

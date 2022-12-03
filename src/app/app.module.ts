@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomerDGColorReportComponent } from './secure/manufacturing/customer-dgcolor-report/customer-dgcolor-report.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DxAccordionModule, DxTemplateModule, DxSliderModule, DxPopupModule, DxSelectBoxModule, DxButtonModule, DxCheckBoxModule, DxLoadPanelModule } from 'devextreme-angular';
+import { DxAccordionModule, DxTemplateModule, DxPopupModule, DxSelectBoxModule, DxCheckBoxModule, DxLoadPanelModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,8 @@ import { DxAccordionModule, DxTemplateModule, DxSliderModule, DxPopupModule, DxS
     AppRoutingModule,
     DxAccordionModule,
     DxTemplateModule,
-    DxSliderModule,
     DxPopupModule,
     DxSelectBoxModule,
-    DxButtonModule,
     DxCheckBoxModule,
     DxLoadPanelModule
   ],

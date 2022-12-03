@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerDGColorReportComponent } from './secure/manufacturing/customer-dgcolor-report/customer-dgcolor-report.component';
 
 const routes: Routes = [
-  { path: ':id', component: CustomerDGColorReportComponent }
+  { path: ':caseId', component: CustomerDGColorReportComponent }
 ];
 
 @NgModule({
