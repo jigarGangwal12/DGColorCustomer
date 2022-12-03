@@ -1,0 +1,240 @@
+<div class="mobile-page-container">
+  <div class="mobile-header">
+    <span class="hdr-logo-left">
+      <img src="/assets/images/dg-colour-logo.png">
+      <h2><i>An Initiative by</i> Jay Chemical Industries Pvt. Ltd.</h2>
+    </span>
+  </div>
+  <div class="main-content-section">
+    <!-- <dx-select-box [dataSource]="statusList" displayExpr="name" valueExpr="name" placeholder="Select Status"
+      [searchEnabled]="true" (onValueChanged)="onStatusChanged($event)" [(value)]="selectedStatus"
+      [showClearButton]="true" style="float: left; width: 75%;">
+    </dx-select-box> -->
+    <div class="all-checkbox-section-top">
+      <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll($event)"></dx-check-box>
+      <dx-select-box class="selectcase-id-right" [dataSource]="caseIdData" (onValueChanged)="onCaseIdChanged($event)"
+        displayExpr="caseId" valueExpr="caseId" placeholder="Select Case ID" [searchEnabled]="true"
+        [showClearButton]="true">
+      </dx-select-box>
+    </div>
+    <h2 class="dgcolour-heading" style="margin-top: 10px;">
+      {{consigneeName}}
+      <label>Lab Prediction Report</label>
+    </h2>
+    <dx-accordion [dataSource]="customerDGColorReport" [collapsible]="false" [multiple]="false"
+      [animationDuration]="300" [selectedIndex]="-1" [collapsible]="true" id="accordion-container">
+      <div style="height: 75px;" *dxTemplate="let items of 'title'" (click)="OnShow(items)">
+        <div class="accourdian-header-text">
+          <span>
+            <em>Case Id: {{ items.caseId }} - <i>{{ items.createdDate | date: 'dd/MM/yyyy' }}</i></em>
+            <em>Shade Id: {{ items.shadeId }} - <i>{{ items.shadeName }}</i></em>
+            <!-- <em>Dyeset: {{ items.dyeset }}</em> -->
+          </span>
+          <i [ngStyle]="{'color': items.rgbCode }" class="underproce">{{items.status}}</i>
+          <!-- <strong>
+            <em [ngStyle]="{'background-color': items.rgbCode }"></em>
+          </strong> -->
+        </div>
+      </div>
+      <div *dxTemplate="let items of 'item'" class="table_grid">
+        <div *ngIf="showOption1RecipeData">
+          <div class="option-right-side-info-bx">
+            <h3>Option 1</h3>
+            <span>
+              <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+            </span>
+          </div>
+          <table cell-spacing="0" border="0">
+            <tr>
+              <td style="padding: 0px !important;">
+                <table class="subtable" cell-spacing="0" border="0">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Recipe</th>
+                  </tr>
+                  <tr *ngFor="let recipe of receipeOptionData1">
+                    <td>{{recipe.productName}}</td>
+                    <td>{{recipe.recipe}}{{recipe.uom}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td style="position: relative; border-right: 1px solid #dddddd;">
+                <table class="subtable-right" cell-spacing="0" border="0">
+                  <tr>
+                    <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
+                      <i
+                        style="position: absolute;top: 5px;right: 0;left: 0;padding: 9px 10px; border-bottom: 1px solid #dddddd; padding: 6px 10px; font-weight: 700;">Metameric</i>
+                      {{Metameric1}} <br>
+                      <span style="width:75px; height:45px; margin-top: 15px;"
+                        [ngStyle]="{'background-color': rgbCodeOption1 }"></span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div *ngIf="showOption2RecipeData">
+          <div class="option-right-side-info-bx">
+            <h3>Option 2</h3>
+            <span>
+              <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+            </span>
+          </div>
+          <table cell-spacing="0" border="0">
+            <tr>
+              <td style="padding: 0px !important;">
+                <table class="subtable" cell-spacing="0" border="0">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Recipe</th>
+                  </tr>
+                  <tr *ngFor="let recipe of receipeOptionData2">
+                    <td>{{recipe.productName}}</td>
+                    <td>{{recipe.recipe}}{{recipe.uom}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td style="position: relative; border-right: 1px solid #dddddd;">
+                <table class="subtable-right" cell-spacing="0" border="0">
+                  <tr>
+                    <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
+                      <i
+                        style="position: absolute;top: 5px;right: 0;left: 0;padding: 9px 10px; border-bottom: 1px solid #dddddd; padding: 6px 10px; font-weight: 700;">Metameric</i>
+                      {{Metameric2}} <br>
+                      <span style="width:75px; height:45px; margin-top: 15px;"
+                        [ngStyle]="{'background-color': rgbCodeOption2 }"></span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div *ngIf="showOption3RecipeData">
+          <div class="option-right-side-info-bx">
+            <h3>Option 3</h3>
+            <span>
+              <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+            </span>
+          </div>
+          <table cell-spacing="0" border="0">
+            <tr>
+              <td style="padding: 0px !important;">
+                <table class="subtable" cell-spacing="0" border="0">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Recipe</th>
+                  </tr>
+                  <tr *ngFor="let recipe of receipeOptionData3">
+                    <td>{{recipe.productName}}</td>
+                    <td>{{recipe.recipe}}{{recipe.uom}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td style="position: relative; border-right: 1px solid #dddddd;">
+                <table class="subtable-right" cell-spacing="0" border="0">
+                  <tr>
+                    <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
+                      <i
+                        style="position: absolute;top: 5px;right: 0;left: 0;padding: 9px 10px; border-bottom: 1px solid #dddddd; padding: 6px 10px; font-weight: 700;">Metameric</i>
+                      {{Metameric3}} <br>
+                      <span style="width:75px; height:45px; margin-top: 15px;"
+                        [ngStyle]="{'background-color': rgbCodeOption3 }"></span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div *ngIf="showOption4RecipeData">
+          <div class="option-right-side-info-bx">
+            <h3>Option 4</h3>
+            <span>
+              <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+            </span>
+          </div>
+          <table cell-spacing="0" border="0">
+            <tr>
+              <td style="padding: 0px !important;">
+                <table class="subtable" cell-spacing="0" border="0">
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Recipe</th>
+                  </tr>
+                  <tr *ngFor="let recipe of receipeOptionData4">
+                    <td>{{recipe.productName}}</td>
+                    <td>{{recipe.recipe}}{{recipe.uom}}</td>
+                  </tr>
+                </table>
+              </td>
+              <td style="position: relative; border-right: 1px solid #dddddd;">
+                <table class="subtable-right" cell-spacing="0" border="0">
+                  <tr>
+                    <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
+                      <i
+                        style="position: absolute;top: 5px;right: 0;left: 0;padding: 9px 10px; border-bottom: 1px solid #dddddd; padding: 6px 10px; font-weight: 700;">Metameric</i>
+                      {{Metameric4}} <br>
+                      <span style="width:75px; height:45px; margin-top: 15px;"
+                        [ngStyle]="{'background-color': rgbCodeOption4 }"></span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </dx-accordion>
+    <dx-popup [width]="'94%'" [showTitle]="true" [showCloseButton]="false" titleTemplate="titlerapidSearch"
+      [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="PopupVisible">
+      <div *dxTemplate="let data of 'titlerapidSearch'" class="costomer-dgcolor-Popup-hdr">
+        <h4>Shade ID: {{shadeId}}</h4>
+        <button type="submit" (click)="PopupClose($event)">
+          <i class="fa fa-window-close"></i>
+        </button>
+      </div>
+      <div class="ctmr-popup-content-sec">
+        <table class="costomer-popup-table">
+          <tr *ngFor="let i of Substrate" style="font-weight: 0 !important;">
+            <td colspan="2">
+              <span>Substrate:</span>
+              {{i.typeOfIndustries}}
+            </td>
+          </tr>
+          <tr *ngFor="let i of Substrate" style="font-weight: 0 !important;">
+            <td colspan="2">
+              <span>Fabric Quality:</span>
+              {{i.uom}} {{i.ratio ? " - " + i.ratio : ""}}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Process:</span> {{Process}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Dyes Range:</span> {{DyesRange}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Dischargability:</span> {{Dischargability}}</td>
+          </tr>
+        </table>
+        <table class="costomer-popup-table">
+          <caption style="text-align:left;">Light Source</caption>
+          <tr>
+            <td colspan="2"><span>Primary:</span> {{LightSourcePrimary}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Secondary:</span> {{LightSourceSecondary}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span>Tertiary:</span> {{LightSourceTertiary}}</td>
+          </tr>
+        </table>
+      </div>
+    </dx-popup>
+  </div>
+</div>
+<dx-load-panel #loadPanel shadingColor="rgba(0,0,0,0.4)" [(visible)]="loadingVisible" [showIndicator]="true"
+  [showPane]="true" [shading]="true" [closeOnOutsideClick]="false">
+</dx-load-panel>
