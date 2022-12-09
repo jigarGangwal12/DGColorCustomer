@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CustomerDGColorReportComponent } from './secure/manufacturing/customer-dgcolor-report/customer-dgcolor-report.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DxAccordionModule, DxTemplateModule, DxPopupModule, DxSelectBoxModule, DxCheckBoxModule, DxLoadPanelModule } from 'devextreme-angular';
+//import { LoginComponent } from './secure/manufacturing/customer-dgcolor-report/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerDGColorReportComponent
+    CustomerDGColorReportComponent,
+    //LoginComponent
   ],
   imports: [
     BrowserModule,
