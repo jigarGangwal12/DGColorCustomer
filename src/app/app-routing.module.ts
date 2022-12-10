@@ -6,7 +6,7 @@ import { CustomerDGColorReportComponent } from './secure/manufacturing/customer-
 const routes: Routes = [
   { path: '', redirectTo: 'login',pathMatch:  'full'},
   { path: 'login', component: LoginComponent,pathMatch: 'full'},
-  { path: ':caseId', component: CustomerDGColorReportComponent }
+  { path: 'DGColorReport/:caseId', component: CustomerDGColorReportComponent }
 ];
 
 @NgModule({

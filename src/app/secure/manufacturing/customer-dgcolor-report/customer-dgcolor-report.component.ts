@@ -52,7 +52,7 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   PredictionaData: boolean = false;
   showShadeMatchingData: boolean = false;
-  //Shade Matching
+  
   showOption1ShadeMatchingData: boolean = false;
   showOption2ShadeMatchingData: boolean = false;
   showOption3ShadeMatchingData: boolean = false;

@@ -3,16 +3,12 @@
     <div class="login-inner-form">
         <div class="form-group" style="margin-top: 2px;">
             <input autocomplete="off" class="input-text input_class_form" type="text" name="username"
-                placeholder="Username" id="Username" required minlength="2" maxlength="50"
-                style="background-color: none !important;">
+                placeholder="Username" id="Username" required minlength="2" maxlength="50" #Username>
         </div>
         <div class="form-group" style="margin-top: 20px;">
             <input autocomplete="off" class="input-text input_class_form" type="password" placeholder="Password"
-                name="password" required minlength="3" maxlength="20">
+                name="password" required minlength="3" maxlength="20" #Password>
         </div>
-        <!-- <div class="form-group" style="margin-top: 20px;">
-            <input autocomplete="off" class="input-text input_class_form" type="password" placeholder="Password"
-                name="password" required minlength="3" maxlength="20">
-        </div> -->
+        <input type="button" [value]="btnText" (click)="validateUser(Username.value, Password.value)">
     </div>
 </div>
