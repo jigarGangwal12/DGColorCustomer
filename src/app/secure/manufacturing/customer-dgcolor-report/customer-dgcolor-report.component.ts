@@ -50,6 +50,26 @@ export class CustomerDGColorReportComponent implements OnInit {
   Metameric4: any;
   loadingVisible = false;
 
+  PredictionaData: boolean = false;
+  showShadeMatchingData: boolean = false;
+  
+  showOption1ShadeMatchingData: boolean = false;
+  showOption2ShadeMatchingData: boolean = false;
+  showOption3ShadeMatchingData: boolean = false;
+  showOption4ShadeMatchingData: boolean = false;
+
+  shadeMatchingAllData: any;
+  shadeMatchingData: any;
+  shadeMatchingOptionData1: any;
+  shadeMatchingOptionData2: any;
+  shadeMatchingOptionData3: any;
+  shadeMatchingOptionData4: any;
+
+  rgbShadeMatching1: any;
+  rgbShadeMatching2: any;
+  rgbShadeMatching3: any;
+  rgbShadeMatching4: any;
+
   constructor(private apiSevices: ApiServicesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -79,7 +99,9 @@ export class CustomerDGColorReportComponent implements OnInit {
   OnShow(data: any) {
     this.loadingVisible = true;
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeId }).subscribe((data: any) => {
-      if (data.table) {
+      if (data.table.length > 0) {
+        this.PredictionaData = true;
+        this.shadeMatchingData = false;
         this.recipeAllData = data.table;
         const maxValueOftrail = Math.max(...data.table.map((o: any) => o.predictionOption), 0);
         this.receipeData = data.table.filter((par: any) => par.predictionOption == 1);
@@ -119,7 +141,52 @@ export class CustomerDGColorReportComponent implements OnInit {
         else
           this.showOption4RecipeData = false;
       }
+      else {
+        this.PredictionaData = false;
+      }
       this.labPredictionParameter = data.table1;
+
+      if (data.table3.length > 0) {
+        this.showShadeMatchingData = true;
+        this.PredictionaData = false;
+        this.shadeMatchingAllData = data.table3;
+        const maxValueOftrail = Math.max(...data.table3.map((o: any) => o.trail), 0);
+        this.shadeMatchingData = data.table3.filter((par: any) => par.trail == 1);
+        if (maxValueOftrail >= 1) {
+          this.showOption1ShadeMatchingData = true;
+          this.shadeMatchingOptionData1 = data.table3.filter((par: any) => par.trail == 1);
+          this.rgbShadeMatching1 = this.shadeMatchingOptionData1[0].rgbHexaCode;
+        }
+        else
+          this.showOption1ShadeMatchingData = false;
+
+        if (maxValueOftrail >= 2) {
+          this.showOption2ShadeMatchingData = true;
+          this.shadeMatchingOptionData2 = data.table3.filter((par: any) => par.trail == 2);
+          this.rgbShadeMatching2 = this.shadeMatchingOptionData2[0].rgbHexaCode;
+        }
+        else
+          this.showOption2ShadeMatchingData = false;
+
+        if (maxValueOftrail >= 3) {
+          this.showOption3ShadeMatchingData = true;
+          this.shadeMatchingOptionData3 = data.table3.filter((par: any) => par.trail == 3);
+          this.rgbShadeMatching3 = this.shadeMatchingOptionData3[0].rgbHexaCode;
+        }
+        else
+          this.showOption3ShadeMatchingData = false;
+
+        if (maxValueOftrail >= 4) {
+          this.showOption4ShadeMatchingData = true;
+          this.shadeMatchingOptionData4 = data.table3.filter((par: any) => par.trail == 4);
+          this.rgbShadeMatching4 = this.shadeMatchingOptionData4[0].rgbHexaCode;
+        }
+        else
+          this.showOption4ShadeMatchingData = false;
+      }
+      else {
+        this.showShadeMatchingData = false;
+      }
       this.loadingVisible = false;
     });
   }
