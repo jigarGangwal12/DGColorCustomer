@@ -42,7 +42,7 @@ export class CustomerDGColorReportComponent implements OnInit {
   LightSourceSecondary: any;
   LightSourceTertiary: any;
   isAll = false;
-  selectedCaseId: any;
+  selectedCaseId: any = '';
   caseIdData: any;
   Metameric1: any;
   Metameric2: any;
@@ -80,9 +80,14 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   getCustomerDGColorReport() {
     this.loadingVisible = true;
+    // const parmas = {
+    //   caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
+    //   consigneeCode: this.isAll ? this.consigneeCode : '',
+    //   status: this.selectedStatus
+    // };
     const parmas = {
-      caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
-      consigneeCode: this.isAll ? this.consigneeCode : '',
+      caseId: this.selectedCaseId == '' ? this.queryString : this.selectedCaseId,
+      consigneeCode: '',
       status: this.selectedStatus
     };
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getCustomerDGColorReport, parmas).subscribe((data: any) => {
@@ -91,7 +96,8 @@ export class CustomerDGColorReportComponent implements OnInit {
       this.consigneeCode = data.table[0].consigneeCode;
       this.caseIdData = "";
       this.selectedCaseId = "";
-      this.isAll ? this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i) : "";
+      // this.isAll ? this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i) : "";
+      this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i);
       this.loadingVisible = false;
     });
   }
