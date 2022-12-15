@@ -42,7 +42,7 @@ export class CustomerDGColorReportComponent implements OnInit {
   LightSourceSecondary: any;
   LightSourceTertiary: any;
   isAll = false;
-  selectedCaseId: any;
+  selectedCaseId: any = '';
   caseIdData: any;
   Metameric1: any;
   Metameric2: any;
@@ -73,25 +73,35 @@ export class CustomerDGColorReportComponent implements OnInit {
   constructor(private apiSevices: ApiServicesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    debugger
     this.route.params.subscribe(params => { this.queryString = atob(params['caseId']); });
     this.selectedStatus = this.statusList[0].name;
     this.getCustomerDGColorReport();
   }
 
   getCustomerDGColorReport() {
+    debugger
     this.loadingVisible = true;
+    // const parmas = {
+    //   caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
+    //   consigneeCode: this.isAll ? this.consigneeCode : '',
+    //   status: this.selectedStatus
+    // };
     const parmas = {
-      caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
-      consigneeCode: this.isAll ? this.consigneeCode : '',
+      caseId: this.selectedCaseId == '' ? this.queryString : this.selectedCaseId,
+      consigneeCode: '',
       status: this.selectedStatus
     };
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getCustomerDGColorReport, parmas).subscribe((data: any) => {
       this.customerDGColorReport = data.table;
-      this.consigneeName = data.table[0].consigneeName;
-      this.consigneeCode = data.table[0].consigneeCode;
-      this.caseIdData = "";
-      this.selectedCaseId = "";
-      this.isAll ? this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i) : "";
+      if(data && data.table.length > 0) {
+        this.consigneeName = data.table[0].consigneeName;
+        this.consigneeCode = data.table[0].consigneeCode;
+        this.caseIdData = "";
+        this.selectedCaseId = "";
+        // this.isAll ? this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i) : "";
+        this.caseIdData = data.table.filter((v: any, i: any) => data.table.findIndex((item: any) => item.caseId == v.caseId) === i);
+      }
       this.loadingVisible = false;
     });
   }
