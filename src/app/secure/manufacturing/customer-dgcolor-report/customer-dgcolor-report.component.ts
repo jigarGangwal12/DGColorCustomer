@@ -73,14 +73,12 @@ export class CustomerDGColorReportComponent implements OnInit {
   constructor(private apiSevices: ApiServicesService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    debugger
     this.route.params.subscribe(params => { this.queryString = atob(params['caseId']); });
     this.selectedStatus = this.statusList[0].name;
     this.getCustomerDGColorReport();
   }
 
   getCustomerDGColorReport() {
-    debugger
     this.loadingVisible = true;
     // const parmas = {
     //   caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
