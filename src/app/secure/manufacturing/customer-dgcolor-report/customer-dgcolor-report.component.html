@@ -9,10 +9,10 @@
 
     <div class="all-checkbox-section-top">
       <!-- <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll()"></dx-check-box> -->
-      <dx-select-box class="selectcase-id-right" [dataSource]="statusList" displayExpr="name" valueExpr="name"
+      <!-- <dx-select-box class="selectcase-id-right" [dataSource]="statusList" displayExpr="name" valueExpr="name"
         placeholder="Select Status" [searchEnabled]="true" (onValueChanged)="onStatusChanged($event)"
         [(value)]="selectedStatus" [showClearButton]="true" style="float: left; width: 50%;">
-      </dx-select-box>
+      </dx-select-box> -->
       <dx-select-box class="selectcase-id-right" [dataSource]="caseIdData" (onValueChanged)="onCaseIdChanged($event)"
         displayExpr="caseId" valueExpr="caseId" placeholder="Select Case ID" [searchEnabled]="true"
         [showClearButton]="true" style="float: left; width: 50%;">
@@ -195,7 +195,7 @@
         <div *ngIf="showShadeMatchingData">
           <div *ngIf="showOption1ShadeMatchingData">
             <div class="option-right-side-info-bx">
-              <h3>Option 1</h3>
+              <!-- <h3>Option 1</h3> -->
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
@@ -366,7 +366,7 @@
           </tr>
         </table>
         <table class="costomer-popup-table">
-          <caption style="text-align:left;">Light Source</caption>
+          <caption style="text-align:left;padding-top: 10px;padding-bottom: 10px;font-weight: 500;">Light Source:</caption>
           <tr>
             <td colspan="2"><span>Primary:</span> {{LightSourcePrimary}}</td>
           </tr>

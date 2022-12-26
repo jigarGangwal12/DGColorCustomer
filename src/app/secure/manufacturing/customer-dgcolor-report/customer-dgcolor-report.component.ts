@@ -106,7 +106,7 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   OnShow(data: any) {
     this.loadingVisible = true;
-    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeId }).subscribe((data: any) => {
+    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeid }).subscribe((data: any) => {
       if (data.table.length > 0) {
         this.PredictionaData = true;
         this.shadeMatchingData = false;
@@ -216,9 +216,9 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   PopoUpOpen(data: any) {
     this.PopupVisible = true;
-    this.shadeId = data.shadeId;
+    this.shadeId = data.shadeid;
     this.loadingVisible = true;
-    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeId }).subscribe((res: any) => {
+    this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeid }).subscribe((res: any) => {
       this.Substrate = res.table1;
       this.Process = res.table1[0].process;
       this.DyesRange = res.table1[0].dyesRange;
