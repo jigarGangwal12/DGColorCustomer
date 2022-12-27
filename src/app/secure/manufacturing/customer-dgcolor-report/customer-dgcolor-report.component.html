@@ -44,9 +44,12 @@
         <div *ngIf="PredictionaData">
           <div *ngIf="showOption1RecipeData">
             <div class="option-right-side-info-bx">
-              <h3>Option 1</h3>
+              <h3 *ngIf="moreThanOnePredctionOption">Option 1</h3>
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+              </span>
+              <span>
+                <i *ngIf="PredictionRemarkOp1" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp1)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -85,6 +88,9 @@
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
+              <span>
+                <i *ngIf="PredictionRemarkOp2" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp2)"></i>
+              </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
@@ -122,6 +128,9 @@
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
+              <span>
+                <i *ngIf="PredictionRemarkOp3" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp3)"></i>
+              </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
@@ -157,7 +166,10 @@
             <div class="option-right-side-info-bx">
               <h3>Option 4</h3>
               <span>
-                <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+                <i  class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+              </span>
+              <span>
+                <i *ngIf="PredictionRemarkOp4" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp4)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -195,9 +207,12 @@
         <div *ngIf="showShadeMatchingData">
           <div *ngIf="showOption1ShadeMatchingData">
             <div class="option-right-side-info-bx">
-              <!-- <h3>Option 1</h3> -->
+              <h3 *ngIf="moreThanOneMatchingOption">Option 1</h3>
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+              </span>
+              <span>
+                <i *ngIf="MatchingRemarkOp1" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp1)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -233,6 +248,9 @@
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
+              <span>
+                <i *ngIf="MatchingRemarkOp2" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp2)"></i>
+              </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
@@ -267,6 +285,9 @@
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
+              <span>
+                <i *ngIf="MatchingRemarkOp3" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp3)"></i>
+              </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
@@ -300,6 +321,9 @@
               <h3>Option 4</h3>
               <span>
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+              </span>
+              <span>
+                <i *ngIf="MatchingRemarkOp4" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp4)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -366,7 +390,8 @@
           </tr>
         </table>
         <table class="costomer-popup-table">
-          <caption style="text-align:left;padding-top: 10px;padding-bottom: 10px;font-weight: 500;">Light Source:</caption>
+          <caption style="text-align:left;padding-top: 10px;padding-bottom: 10px;font-weight: 500;">Light Source:
+          </caption>
           <tr>
             <td colspan="2"><span>Primary:</span> {{LightSourcePrimary}}</td>
           </tr>
@@ -377,6 +402,20 @@
             <td colspan="2"><span>Tertiary:</span> {{LightSourceTertiary}}</td>
           </tr>
         </table>
+      </div>
+    </dx-popup>
+
+    <dx-popup [width]="'500'" [height]="400" [showTitle]="true" [showCloseButton]="false"
+      titleTemplate="titlerapidSearch" id="test" [dragEnabled]="true" [closeOnOutsideClick]="false"
+      [(visible)]="remarkPopupVisible">
+      <div *dxTemplate="let data of 'titlerapidSearch'" class="costomer-dgcolor-Popup-hdr">
+        <h4>Remark</h4>
+        <button type="submit" (click)="remarkPopupClose($event)">
+          <i class="fa fa-window-close"></i>
+        </button>
+      </div>
+      <div clas="dx-popup-content" style="height: 100px;">
+        <h4>{{Remarks}}</h4>
       </div>
     </dx-popup>
   </div>
