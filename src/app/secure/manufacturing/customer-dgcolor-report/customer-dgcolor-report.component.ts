@@ -96,16 +96,16 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   getCustomerDGColorReport() {
     this.loadingVisible = true;
-    // const parmas = {
-    //   caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
-    //   consigneeCode: this.isAll ? this.consigneeCode : '',
-    //   status: this.selectedStatus
-    // };
     const parmas = {
-      caseId: this.selectedCaseId == '' ? this.queryString : this.selectedCaseId,
-      consigneeCode: '',
+      caseId: this.isAll ? this.selectedCaseId ? this.selectedCaseId : '' : this.queryString,
+      consigneeCode: this.isAll ? this.consigneeCode : '',
       status: this.selectedStatus
     };
+    // const parmas = {
+    //   caseId: this.selectedCaseId == '' ? this.queryString : this.selectedCaseId,
+    //   consigneeCode: '',
+    //   status: this.selectedStatus
+    // };
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getCustomerDGColorReport, parmas).subscribe((data: any) => {
       this.customerDGColorReport = data.table;
       if (data && data.table.length > 0) {
