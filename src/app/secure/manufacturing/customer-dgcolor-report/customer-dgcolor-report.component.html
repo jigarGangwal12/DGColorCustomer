@@ -9,10 +9,10 @@
 
     <div class="all-checkbox-section-top">
       <!-- <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll()"></dx-check-box> -->
-      <dx-select-box class="selectcase-id-right" [dataSource]="statusList" displayExpr="name" valueExpr="name"
+      <!-- <dx-select-box class="selectcase-id-right" [dataSource]="statusList" displayExpr="name" valueExpr="name"
         placeholder="Select Status" [searchEnabled]="true" (onValueChanged)="onStatusChanged($event)"
         [(value)]="selectedStatus" [showClearButton]="true" style="float: left; width: 50%;">
-      </dx-select-box>
+      </dx-select-box> -->
       <dx-select-box class="selectcase-id-right" [dataSource]="caseIdData" (onValueChanged)="onCaseIdChanged($event)"
         displayExpr="caseId" valueExpr="caseId" placeholder="Select Case ID" [searchEnabled]="true"
         [showClearButton]="true" style="float: left; width: 50%;">
