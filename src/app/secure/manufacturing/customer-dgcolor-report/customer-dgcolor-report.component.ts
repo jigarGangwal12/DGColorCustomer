@@ -34,6 +34,7 @@ export class CustomerDGColorReportComponent implements OnInit {
   consigneeName: any;
   consigneeCode: any;
   shadeId: any;
+  customerShadeChartName:any;
   Substrate: any;
   Process: any;
   DyesRange: any;
@@ -253,13 +254,15 @@ export class CustomerDGColorReportComponent implements OnInit {
     this.getCustomerDGColorReport();
   }
 
-  PopoUpOpen(data: any) {
+  PopoUpOpen(data: any) {   
     this.PopupVisible = true;
     this.shadeId = data.shadeid;
+
     this.loadingVisible = true;
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeid }).subscribe((res: any) => {
+      this.customerShadeChartName =res.table1[0].customerShadeChartName;
       this.Substrate = res.table1;
-      this.Process = res.table1[0].process;
+      this.Process = res.table1[0].process;      
       this.DyesRange = res.table1[0].dyesRange;
       this.Dischargability = res.table1[0].dischargability;
       this.LightSourcePrimary = res.table1[0].lightSourcePrimary;
