@@ -34,7 +34,7 @@ export class CustomerDGColorReportComponent implements OnInit {
   consigneeName: any;
   consigneeCode: any;
   shadeId: any;
-  customerShadeChartName:any;
+  customerShadeChartName: any;
   Substrate: any;
   Process: any;
   DyesRange: any;
@@ -133,6 +133,11 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 1) {
           this.showOption1RecipeData = true;
           this.receipeOptionData1 = data.table.filter((par: any) => par.predictionOption == 1);
+          this.receipeOptionData1.forEach((element: any) => {
+            if (element.uom == '%') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+          });
           this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
           // this.Metameric1 = this.receipeOptionData1[0].primaryMetameric + "/" + this.receipeOptionData1[0].secondaryMetameric + "/" + this.receipeOptionData1[0].tertiaryMetameric;
           if (this.receipeOptionData1 && this.receipeOptionData1[0].matamerismByDataColor && this.receipeOptionData1[0].matamerismByDataColor != null && this.receipeOptionData1[0].matamerismByDataColor != undefined) {
@@ -147,6 +152,11 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.moreThanOnePredctionOption = true;
           this.showOption2RecipeData = true;
           this.receipeOptionData2 = data.table.filter((par: any) => par.predictionOption == 2);
+          this.receipeOptionData2.forEach((element: any) => {
+            if (element.uom == '%') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+          });
           this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
           // this.Metameric2 = this.receipeOptionData2[0].primaryMetameric + "/" + this.receipeOptionData2[0].secondaryMetameric + "/" + this.receipeOptionData2[0].tertiaryMetameric;
           if (this.receipeOptionData2 && this.receipeOptionData2[0].matamerismByDataColor && this.receipeOptionData2[0].matamerismByDataColor != null && this.receipeOptionData2[0].matamerismByDataColor != undefined) {
@@ -160,6 +170,11 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 3) {
           this.showOption3RecipeData = true;
           this.receipeOptionData3 = data.table.filter((par: any) => par.predictionOption == 3);
+          this.receipeOptionData3.forEach((element: any) => {
+            if (element.uom == '%') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+          });
           this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
           // this.Metameric3 = this.receipeOptionData3[0].primaryMetameric + "/" + this.receipeOptionData3[0].secondaryMetameric + "/" + this.receipeOptionData3[0].tertiaryMetameric;
           if (this.receipeOptionData3 && this.receipeOptionData3[0].matamerismByDataColor && this.receipeOptionData3[0].matamerismByDataColor != null && this.receipeOptionData3[0].matamerismByDataColor != undefined) {
@@ -173,6 +188,11 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 4) {
           this.showOption4RecipeData = true;
           this.receipeOptionData4 = data.table.filter((par: any) => par.predictionOption == 4);
+          this.receipeOptionData4.forEach((element: any) => {
+            if (element.uom == '%') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+          });
           this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
           // this.Metameric4 = this.receipeOptionData4[0].primaryMetameric + "/" + this.receipeOptionData4[0].secondaryMetameric + "/" + this.receipeOptionData4[0].tertiaryMetameric;
           if (this.receipeOptionData4 && this.receipeOptionData4[0].matamerismByDataColor && this.receipeOptionData4[0].matamerismByDataColor != null && this.receipeOptionData4[0].matamerismByDataColor != undefined) {
@@ -254,15 +274,15 @@ export class CustomerDGColorReportComponent implements OnInit {
     this.getCustomerDGColorReport();
   }
 
-  PopoUpOpen(data: any) {   
+  PopoUpOpen(data: any) {
     this.PopupVisible = true;
     this.shadeId = data.shadeid;
 
     this.loadingVisible = true;
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeid }).subscribe((res: any) => {
-      this.customerShadeChartName =res.table1[0].customerShadeChartName;
+      this.customerShadeChartName = res.table1[0].customerShadeChartName;
       this.Substrate = res.table1;
-      this.Process = res.table1[0].process;      
+      this.Process = res.table1[0].process;
       this.DyesRange = res.table1[0].dyesRange;
       this.Dischargability = res.table1[0].dischargability;
       this.LightSourcePrimary = res.table1[0].lightSourcePrimary;
@@ -276,7 +296,7 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   remarkPopoUpOpen(remark: any) {
     this.remarkPopupVisible = true;
-    if(remark){
+    if (remark) {
       this.Remarks = remark;
     }
   }

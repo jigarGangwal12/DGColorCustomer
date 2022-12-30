@@ -6,7 +6,6 @@
     </span>
   </div>
   <div class="main-content-section">
-
     <div class="all-checkbox-section-top">
       <!-- <dx-check-box class="all-left" [value]='isAll' text="All" (onValueChanged)="onClickAll()"></dx-check-box> -->
       <!-- <dx-select-box class="selectcase-id-right" [dataSource]="statusList" displayExpr="name" valueExpr="name"
@@ -17,9 +16,6 @@
         displayExpr="caseId" valueExpr="caseId" placeholder="Select Case ID" [searchEnabled]="true"
         [showClearButton]="true" style="float: left; width: 50%;">
       </dx-select-box>
-
-
-
     </div>
     <h2 class="dgcolour-heading" style="margin-top: 10px;">
       {{consigneeName}}
@@ -50,12 +46,13 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="PredictionRemarkOp1" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp1)"></i>
+                <i *ngIf="PredictionRemarkOp1" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(PredictionRemarkOp1)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
-                <td style="padding: 0px !important;">
+                <td style="padding: 0px !important;width: 58%;">
                   <table class="subtable" cell-spacing="0" border="0">
                     <tr>
                       <th>Product Name</th>
@@ -67,7 +64,7 @@
                     </tr>
                   </table>
                 </td>
-                <td style="position: relative; border-right: 1px solid #dddddd;">
+                <td style="position: relative; border-right: 1px solid #dddddd;width: 30%">
                   <table class="subtable-right" cell-spacing="0" border="0">
                     <tr>
                       <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
@@ -90,12 +87,13 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="PredictionRemarkOp2" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp2)"></i>
+                <i *ngIf="PredictionRemarkOp2" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(PredictionRemarkOp2)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
-                <td style="padding: 0px !important;">
+                <td style="padding: 0px !important;width: 58%;">
                   <table class="subtable" cell-spacing="0" border="0">
                     <tr>
                       <th>Product Name</th>
@@ -107,7 +105,7 @@
                     </tr>
                   </table>
                 </td>
-                <td style="position: relative; border-right: 1px solid #dddddd;">
+                <td style="position: relative; border-right: 1px solid #dddddd;width: 30%;">
                   <table class="subtable-right" cell-spacing="0" border="0">
                     <tr>
                       <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
@@ -130,12 +128,13 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="PredictionRemarkOp3" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp3)"></i>
+                <i *ngIf="PredictionRemarkOp3" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(PredictionRemarkOp3)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
-                <td style="padding: 0px !important;">
+                <td style="padding: 0px !important;width: 58%;">
                   <table class="subtable" cell-spacing="0" border="0">
                     <tr>
                       <th>Product Name</th>
@@ -147,7 +146,7 @@
                     </tr>
                   </table>
                 </td>
-                <td style="position: relative; border-right: 1px solid #dddddd;">
+                <td style="position: relative; border-right: 1px solid #dddddd;width: 30%;">
                   <table class="subtable-right" cell-spacing="0" border="0">
                     <tr>
                       <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
@@ -167,15 +166,16 @@
             <div class="option-right-side-info-bx">
               <h3>Option 4</h3>
               <span>
-                <i  class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
+                <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="PredictionRemarkOp4" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(PredictionRemarkOp4)"></i>
+                <i *ngIf="PredictionRemarkOp4" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(PredictionRemarkOp4)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
               <tr>
-                <td style="padding: 0px !important;">
+                <td style="padding: 0px !important;width: 58%;">
                   <table class="subtable" cell-spacing="0" border="0">
                     <tr>
                       <th>Product Name</th>
@@ -187,7 +187,7 @@
                     </tr>
                   </table>
                 </td>
-                <td style="position: relative; border-right: 1px solid #dddddd;">
+                <td style="position: relative; border-right: 1px solid #dddddd;width: 30%;">
                   <table class="subtable-right" cell-spacing="0" border="0">
                     <tr>
                       <td style="border-top: 0px !important; text-align:center;padding: 40px 0px 0px 0px !important;">
@@ -214,7 +214,8 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="MatchingRemarkOp1" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp1)"></i>
+                <i *ngIf="MatchingRemarkOp1" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(MatchingRemarkOp1)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -251,7 +252,8 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="MatchingRemarkOp2" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp2)"></i>
+                <i *ngIf="MatchingRemarkOp2" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(MatchingRemarkOp2)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -288,7 +290,8 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="MatchingRemarkOp3" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp3)"></i>
+                <i *ngIf="MatchingRemarkOp3" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(MatchingRemarkOp3)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -325,7 +328,8 @@
                 <i class="fa fa-info-circle" (click)="PopoUpOpen(items)"></i>
               </span>
               <span>
-                <i *ngIf="MatchingRemarkOp4" class="fa fa-solid fa-comment" (click)="remarkPopoUpOpen(MatchingRemarkOp4)"></i>
+                <i *ngIf="MatchingRemarkOp4" class="fa fa-solid fa-comment"
+                  (click)="remarkPopoUpOpen(MatchingRemarkOp4)"></i>
               </span>
             </div>
             <table cell-spacing="0" border="0">
@@ -362,7 +366,9 @@
     <dx-popup [width]="'94%'" [showTitle]="true" [showCloseButton]="false" titleTemplate="titlerapidSearch"
       [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="PopupVisible">
       <div *dxTemplate="let data of 'titlerapidSearch'" class="costomer-dgcolor-Popup-hdr">
-        <h4>Shade ID: {{shadeId}} <p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> [ </p>{{customerShadeChartName}}<p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> ] </p></h4>
+        <h4>Shade ID: {{shadeId}} <p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> [ </p>
+          {{customerShadeChartName}}<p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> ] </p>
+        </h4>
         <button type="submit" (click)="PopupClose()">
           <i class="fa fa-window-close"></i>
         </button>
@@ -416,7 +422,7 @@
           <i class="fa fa-window-close"></i>
         </button>
       </div>
-      <div clas="dx-popup-content"  style="height: 100px;">
+      <div clas="dx-popup-content" style="height: 100px;">
         <h4 style="font-weight: 500; margin-top: auto;">{{Remarks}}</h4>
       </div>
     </dx-popup>
