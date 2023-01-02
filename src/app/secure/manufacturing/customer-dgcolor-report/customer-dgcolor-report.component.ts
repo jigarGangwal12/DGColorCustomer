@@ -134,7 +134,7 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.showOption1RecipeData = true;
           this.receipeOptionData1 = data.table.filter((par: any) => par.predictionOption == 1);
           this.receipeOptionData1.forEach((element: any) => {
-            if (element.uom == '%') {
+            if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
           });
@@ -153,7 +153,7 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.showOption2RecipeData = true;
           this.receipeOptionData2 = data.table.filter((par: any) => par.predictionOption == 2);
           this.receipeOptionData2.forEach((element: any) => {
-            if (element.uom == '%') {
+            if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
           });
@@ -171,7 +171,7 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.showOption3RecipeData = true;
           this.receipeOptionData3 = data.table.filter((par: any) => par.predictionOption == 3);
           this.receipeOptionData3.forEach((element: any) => {
-            if (element.uom == '%') {
+            if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
           });
@@ -189,7 +189,7 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.showOption4RecipeData = true;
           this.receipeOptionData4 = data.table.filter((par: any) => par.predictionOption == 4);
           this.receipeOptionData4.forEach((element: any) => {
-            if (element.uom == '%') {
+            if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
           });
