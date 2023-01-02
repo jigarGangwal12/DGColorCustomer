@@ -136,6 +136,8 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.receipeOptionData1.forEach((element: any) => {
             if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
+            } else if(element.uom == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
             }
           });
           this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
@@ -156,6 +158,9 @@ export class CustomerDGColorReportComponent implements OnInit {
             if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
+            else if(element.uom == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
           });
           this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
           // this.Metameric2 = this.receipeOptionData2[0].primaryMetameric + "/" + this.receipeOptionData2[0].secondaryMetameric + "/" + this.receipeOptionData2[0].tertiaryMetameric;
@@ -174,6 +179,9 @@ export class CustomerDGColorReportComponent implements OnInit {
             if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
             }
+            else if(element.uom == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
           });
           this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
           // this.Metameric3 = this.receipeOptionData3[0].primaryMetameric + "/" + this.receipeOptionData3[0].secondaryMetameric + "/" + this.receipeOptionData3[0].tertiaryMetameric;
@@ -191,6 +199,9 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.receipeOptionData4.forEach((element: any) => {
             if (element.uom == 'g/l') {
               element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+            else if(element.uom == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
             }
           });
           this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
@@ -218,6 +229,14 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 1) {
           this.showOption1ShadeMatchingData = true;
           this.shadeMatchingOptionData1 = data.table3.filter((par: any) => par.trail == 1);
+          this.shadeMatchingOptionData1.forEach((element: any) => {
+            if (element.recunit == 'g/l') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+            else if(element.recunit == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
+          });
           this.rgbShadeMatching1 = this.shadeMatchingOptionData1[0].rgbHexaCode;
           this.MatchingRemarkOp1 = this.shadeMatchingOptionData1[0].remarks;
         }
@@ -228,6 +247,14 @@ export class CustomerDGColorReportComponent implements OnInit {
           this.moreThanOneMatchingOption = true;
           this.showOption2ShadeMatchingData = true;
           this.shadeMatchingOptionData2 = data.table3.filter((par: any) => par.trail == 2);
+          this.shadeMatchingOptionData2.forEach((element: any) => {
+            if (element.recunit == 'g/l') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+            else if(element.recunit == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
+          });
           this.rgbShadeMatching2 = this.shadeMatchingOptionData2[0].rgbHexaCode;
           this.MatchingRemarkOp2 = this.shadeMatchingOptionData2[0].remarks;
         }
@@ -237,6 +264,14 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 3) {
           this.showOption3ShadeMatchingData = true;
           this.shadeMatchingOptionData3 = data.table3.filter((par: any) => par.trail == 3);
+          this.shadeMatchingOptionData3.forEach((element: any) => {
+            if (element.recunit == 'g/l') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+            else if(element.recunit == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
+          });
           this.rgbShadeMatching3 = this.shadeMatchingOptionData3[0].rgbHexaCode;
           this.MatchingRemarkOp3 = this.shadeMatchingOptionData3[0].remarks;
         }
@@ -246,6 +281,14 @@ export class CustomerDGColorReportComponent implements OnInit {
         if (maxValueOftrail >= 4) {
           this.showOption4ShadeMatchingData = true;
           this.shadeMatchingOptionData4 = data.table3.filter((par: any) => par.trail == 4);
+          this.shadeMatchingOptionData4.forEach((element: any) => {
+            if (element.recunit == 'g/l') {
+              element.recipe= parseFloat(element.recipe).toFixed(2);
+            }
+            else if(element.recunit == '%'){
+              element.recipe= parseFloat(element.recipe).toFixed(4);
+            }
+          });
           this.rgbShadeMatching4 = this.shadeMatchingOptionData4[0].rgbHexaCode;
           this.MatchingRemarkOp4 = this.shadeMatchingOptionData4[0].remarks;
         }
