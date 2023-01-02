@@ -292,7 +292,7 @@ i {
 
 .costomer-dgcolor-Popup-hdr h4 {
   float: left;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   margin: 0px;
   padding: 0px;
@@ -367,7 +367,7 @@ i {
 .mobile-page-container .table_grid table tr td {
   border-top: 1px solid #dddddd !important;
   text-align: left;
-  padding: 9px 10px !important;
+  padding: 9px 4px !important;
   font-size: 13px !important;
   font-weight: 400 !important;
 }
@@ -408,4 +408,32 @@ i {
   margin: 0px auto;
   border: 4px solid rgb(235, 235, 235);
   background-color: rgb(81, 31, 33);
+}
+
+
+@media (min-width: 1921px) and (max-width: 4000px) {
+  .mobile-page-container {
+    width: 882px;
+    display: table;
+    margin: auto;
+    border: 1px solid rgb(219, 219, 219);
+  }
+
+  .mobile-page-container .main-content-section {
+    padding: 0px 15px 27px 15px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .mobile-page-container {
+    width: 882px;
+    display: table;
+    margin: auto;
+    border: 1px solid rgb(219, 219, 219);
+    border-top: 0px;
+  }
+
+  .mobile-page-container .main-content-section {
+    padding: 0px 15px 15px 15px;
+  }
 }
