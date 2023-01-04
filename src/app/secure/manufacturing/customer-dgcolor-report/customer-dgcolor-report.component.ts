@@ -131,105 +131,115 @@ export class CustomerDGColorReportComponent implements OnInit {
         const maxValueOftrail = Math.max(...data.table.map((o: any) => o.predictionOption), 0);
         this.receipeData = data.table.filter((par: any) => par.predictionOption == 1);
         if (maxValueOftrail >= 1) {
-          this.showOption1RecipeData = true;
           this.receipeOptionData1 = data.table.filter((par: any) => par.predictionOption == 1);
-          this.receipeOptionData1.forEach((element: any) => {
-            if (element.uom == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            } else if (element.uom == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
+          if (this.receipeOptionData1 && this.receipeOptionData1.length > 0) {
+            this.showOption1RecipeData = true;
+            this.receipeOptionData1.forEach((element: any) => {
+              if (element.uom == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              } else if (element.uom == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
+            if (this.receipeOptionData1 && this.receipeOptionData1[0].matamerismByDataColor && this.receipeOptionData1[0].matamerismByDataColor != null && this.receipeOptionData1[0].matamerismByDataColor != undefined) {
+              this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -6);
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -20);
+              }
+              if (data.table1[0].lightSourceTertiary == '') {
+                this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -13);
+              }
             }
-          });
-          this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
-          if (this.receipeOptionData1 && this.receipeOptionData1[0].matamerismByDataColor && this.receipeOptionData1[0].matamerismByDataColor != null && this.receipeOptionData1[0].matamerismByDataColor != undefined) {
-            this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -6);
-            if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -20);
-            }
-            if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -13);
-            }
+            this.PredictionRemarkOp1 = this.receipeOptionData1[0].remarks;
           }
-          this.PredictionRemarkOp1 = this.receipeOptionData1[0].remarks;
         }
         else
           this.showOption1RecipeData = false;
 
         if (maxValueOftrail >= 2) {
           this.moreThanOnePredctionOption = true;
-          this.showOption2RecipeData = true;
           this.receipeOptionData2 = data.table.filter((par: any) => par.predictionOption == 2);
-          this.receipeOptionData2.forEach((element: any) => {
-            if (element.uom == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
+          if (this.receipeOptionData2 && this.receipeOptionData2.length > 0) {
+            this.showOption2RecipeData = true;
+            this.receipeOptionData2.forEach((element: any) => {
+              if (element.uom == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.uom == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
+            if (this.receipeOptionData2 && this.receipeOptionData2[0].matamerismByDataColor && this.receipeOptionData2[0].matamerismByDataColor != null && this.receipeOptionData2[0].matamerismByDataColor != undefined) {
+              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -6);
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
+              }
+              if (data.table1[0].lightSourceTertiary == '') {
+                this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -13);
+              }
             }
-            else if (element.uom == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
-          if (this.receipeOptionData2 && this.receipeOptionData2[0].matamerismByDataColor && this.receipeOptionData2[0].matamerismByDataColor != null && this.receipeOptionData2[0].matamerismByDataColor != undefined) {
-            this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -6);
-            if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
-            }
-            if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -13);
-            }
+            this.PredictionRemarkOp2 = this.receipeOptionData2[0].remarks;
           }
-          this.PredictionRemarkOp2 = this.receipeOptionData2[0].remarks;
         }
         else
           this.showOption2RecipeData = false;
 
         if (maxValueOftrail >= 3) {
-          this.showOption3RecipeData = true;
           this.receipeOptionData3 = data.table.filter((par: any) => par.predictionOption == 3);
-          this.receipeOptionData3.forEach((element: any) => {
-            if (element.uom == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            }
-            else if (element.uom == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
-          if (this.receipeOptionData3 && this.receipeOptionData3[0].matamerismByDataColor && this.receipeOptionData3[0].matamerismByDataColor != null && this.receipeOptionData3[0].matamerismByDataColor != undefined) {
-            this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -6);
-            if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
-            }
-            if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -13);
+          if (this.receipeOptionData3 && this.receipeOptionData3.length > 0) {
+            this.showOption3RecipeData = true;
+            this.receipeOptionData3.forEach((element: any) => {
+              if (element.uom == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.uom == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            if (this.receipeOptionData3 && this.receipeOptionData3.length > 0 && this.receipeOptionData3[0].rgbCode) {
+              this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
+              if (this.receipeOptionData3 && this.receipeOptionData3[0].matamerismByDataColor && this.receipeOptionData3[0].matamerismByDataColor != null && this.receipeOptionData3[0].matamerismByDataColor != undefined) {
+                this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -6);
+                if (data.table1[0].lightSourceSecondary == '') {
+                  this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
+                }
+                if (data.table1[0].lightSourceTertiary == '') {
+                  this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -13);
+                }
+              }
+              this.PredictionRemarkOp3 = this.receipeOptionData3[0].remarks;
             }
           }
-          this.PredictionRemarkOp3 = this.receipeOptionData3[0].remarks;
         }
         else
           this.showOption3RecipeData = false;
 
         if (maxValueOftrail >= 4) {
-          this.showOption4RecipeData = true;
           this.receipeOptionData4 = data.table.filter((par: any) => par.predictionOption == 4);
-          this.receipeOptionData4.forEach((element: any) => {
-            if (element.uom == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
+          if (this.receipeOptionData4 && this.receipeOptionData4.length > 0) {
+            this.showOption4RecipeData = true;
+            this.receipeOptionData4.forEach((element: any) => {
+              if (element.uom == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.uom == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
+            if (this.receipeOptionData4 && this.receipeOptionData4[0].matamerismByDataColor && this.receipeOptionData4[0].matamerismByDataColor != null && this.receipeOptionData4[0].matamerismByDataColor != undefined) {
+              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -6);
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
+              }
+              if (data.table1[0].lightSourceTertiary == '') {
+                this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -13);
+              }
             }
-            else if (element.uom == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
-          if (this.receipeOptionData4 && this.receipeOptionData4[0].matamerismByDataColor && this.receipeOptionData4[0].matamerismByDataColor != null && this.receipeOptionData4[0].matamerismByDataColor != undefined) {
-            this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -6);
-            if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
-            }
-            if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -13);
-            }
+            this.PredictionRemarkOp4 = this.receipeOptionData4[0].remarks;
           }
-          this.PredictionRemarkOp4 = this.receipeOptionData4[0].remarks;
         }
         else
           this.showOption4RecipeData = false;
@@ -247,70 +257,76 @@ export class CustomerDGColorReportComponent implements OnInit {
         const maxValueOftrail = Math.max(...data.table3.map((o: any) => o.trail), 0);
         this.shadeMatchingData = data.table3.filter((par: any) => par.trail == 1);
         if (maxValueOftrail >= 1) {
-          this.showOption1ShadeMatchingData = true;
           this.shadeMatchingOptionData1 = data.table3.filter((par: any) => par.trail == 1);
-          this.shadeMatchingOptionData1.forEach((element: any) => {
-            if (element.recunit == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            }
-            else if (element.recunit == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbShadeMatching1 = this.shadeMatchingOptionData1[0].rgbHexaCode;
-          this.MatchingRemarkOp1 = this.shadeMatchingOptionData1[0].remarks;
+          if (this.shadeMatchingOptionData1 && this.shadeMatchingOptionData1.length > 0) {
+            this.showOption1ShadeMatchingData = true;
+            this.shadeMatchingOptionData1.forEach((element: any) => {
+              if (element.recunit == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.recunit == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbShadeMatching1 = this.shadeMatchingOptionData1[0].rgbHexaCode;
+            this.MatchingRemarkOp1 = this.shadeMatchingOptionData1[0].remarks;
+          }
         }
         else
           this.showOption1ShadeMatchingData = false;
 
         if (maxValueOftrail >= 2) {
           this.moreThanOneMatchingOption = true;
-          this.showOption2ShadeMatchingData = true;
           this.shadeMatchingOptionData2 = data.table3.filter((par: any) => par.trail == 2);
-          this.shadeMatchingOptionData2.forEach((element: any) => {
-            if (element.recunit == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            }
-            else if (element.recunit == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbShadeMatching2 = this.shadeMatchingOptionData2[0].rgbHexaCode;
-          this.MatchingRemarkOp2 = this.shadeMatchingOptionData2[0].remarks;
+          if (this.shadeMatchingOptionData2 && this.shadeMatchingOptionData2.length > 0) {
+            this.showOption2ShadeMatchingData = true;
+            this.shadeMatchingOptionData2.forEach((element: any) => {
+              if (element.recunit == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.recunit == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbShadeMatching2 = this.shadeMatchingOptionData2[0].rgbHexaCode;
+            this.MatchingRemarkOp2 = this.shadeMatchingOptionData2[0].remarks;
+          }
         }
         else
           this.showOption2ShadeMatchingData = false;
-
         if (maxValueOftrail >= 3) {
-          this.showOption3ShadeMatchingData = true;
           this.shadeMatchingOptionData3 = data.table3.filter((par: any) => par.trail == 3);
-          this.shadeMatchingOptionData3.forEach((element: any) => {
-            if (element.recunit == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            }
-            else if (element.recunit == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbShadeMatching3 = this.shadeMatchingOptionData3[0].rgbHexaCode;
-          this.MatchingRemarkOp3 = this.shadeMatchingOptionData3[0].remarks;
+          if (this.shadeMatchingOptionData3 && this.shadeMatchingOptionData3.length > 0) {
+            this.showOption3ShadeMatchingData = true;
+            this.shadeMatchingOptionData3.forEach((element: any) => {
+              if (element.recunit == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.recunit == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbShadeMatching3 = this.shadeMatchingOptionData3[0].rgbHexaCode;
+            this.MatchingRemarkOp3 = this.shadeMatchingOptionData3[0].remarks;
+          }
         }
         else
           this.showOption3ShadeMatchingData = false;
-
         if (maxValueOftrail >= 4) {
-          this.showOption4ShadeMatchingData = true;
           this.shadeMatchingOptionData4 = data.table3.filter((par: any) => par.trail == 4);
-          this.shadeMatchingOptionData4.forEach((element: any) => {
-            if (element.recunit == 'g/l') {
-              element.recipe = parseFloat(element.recipe).toFixed(2);
-            }
-            else if (element.recunit == '%') {
-              element.recipe = parseFloat(element.recipe).toFixed(4);
-            }
-          });
-          this.rgbShadeMatching4 = this.shadeMatchingOptionData4[0].rgbHexaCode;
-          this.MatchingRemarkOp4 = this.shadeMatchingOptionData4[0].remarks;
+          if (this.shadeMatchingOptionData4 && this.shadeMatchingOptionData4.length > 0) {
+            this.showOption4ShadeMatchingData = true;
+            this.shadeMatchingOptionData4.forEach((element: any) => {
+              if (element.recunit == 'g/l') {
+                element.recipe = parseFloat(element.recipe).toFixed(2);
+              }
+              else if (element.recunit == '%') {
+                element.recipe = parseFloat(element.recipe).toFixed(4);
+              }
+            });
+            this.rgbShadeMatching4 = this.shadeMatchingOptionData4[0].rgbHexaCode;
+            this.MatchingRemarkOp4 = this.shadeMatchingOptionData4[0].remarks;
+          }
         }
         else
           this.showOption4ShadeMatchingData = false;
