@@ -122,7 +122,6 @@ export class CustomerDGColorReportComponent implements OnInit {
 
   OnShow(data: any) {
     this.loadingVisible = true;
-    debugger
     this.apiSevices.getAll(this.API_CONSTANTS.DgColorCustomerReport.CustomerReport.getDatabyShadeId, { shadeId: data.shadeid }).subscribe((data: any) => {
       if (data.table.length > 0) {
         this.moreThanOnePredctionOption = false;
@@ -145,13 +144,11 @@ export class CustomerDGColorReportComponent implements OnInit {
           if (this.receipeOptionData1 && this.receipeOptionData1[0].matamerismByDataColor && this.receipeOptionData1[0].matamerismByDataColor != null && this.receipeOptionData1[0].matamerismByDataColor != undefined) {
             this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -6);
             if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -12);
-            }
-            if (data.table1[0].lightSourceTertiary == '') {
               this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -20);
             }
-            // if(lightSourcePrimary)
-            // debugger
+            if (data.table1[0].lightSourceTertiary == '') {
+              this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -13);
+            }
           }
           this.PredictionRemarkOp1 = this.receipeOptionData1[0].remarks;
         }
@@ -174,10 +171,10 @@ export class CustomerDGColorReportComponent implements OnInit {
           if (this.receipeOptionData2 && this.receipeOptionData2[0].matamerismByDataColor && this.receipeOptionData2[0].matamerismByDataColor != null && this.receipeOptionData2[0].matamerismByDataColor != undefined) {
             this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -6);
             if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -12);
+              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
             }
             if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
+              this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -13);
             }
           }
           this.PredictionRemarkOp2 = this.receipeOptionData2[0].remarks;
@@ -200,10 +197,10 @@ export class CustomerDGColorReportComponent implements OnInit {
           if (this.receipeOptionData3 && this.receipeOptionData3[0].matamerismByDataColor && this.receipeOptionData3[0].matamerismByDataColor != null && this.receipeOptionData3[0].matamerismByDataColor != undefined) {
             this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -6);
             if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -12);
+              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
             }
             if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
+              this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -13);
             }
           }
           this.PredictionRemarkOp3 = this.receipeOptionData3[0].remarks;
@@ -226,10 +223,10 @@ export class CustomerDGColorReportComponent implements OnInit {
           if (this.receipeOptionData4 && this.receipeOptionData4[0].matamerismByDataColor && this.receipeOptionData4[0].matamerismByDataColor != null && this.receipeOptionData4[0].matamerismByDataColor != undefined) {
             this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -6);
             if (data.table1[0].lightSourceSecondary == '') {
-              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -12);
+              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
             }
             if (data.table1[0].lightSourceTertiary == '') {
-              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
+              this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -13);
             }
           }
           this.PredictionRemarkOp4 = this.receipeOptionData4[0].remarks;

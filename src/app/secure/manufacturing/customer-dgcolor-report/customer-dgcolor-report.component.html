@@ -364,7 +364,7 @@
       </div>
     </dx-accordion>
     <dx-popup [width]="'94%'" [showTitle]="true" [showCloseButton]="false" titleTemplate="titlerapidSearch"
-      [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="PopupVisible">
+      Id="shadeIdPopup" [dragEnabled]="true" [closeOnOutsideClick]="false" [(visible)]="PopupVisible">
       <div *dxTemplate="let data of 'titlerapidSearch'" class="costomer-dgcolor-Popup-hdr">
         <h4>Shade ID: {{shadeId}} <p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> [ </p>
           {{customerShadeChartName}}<p style="display: inline-block;margin: 0px;" *ngIf="customerShadeChartName"> ] </p>
