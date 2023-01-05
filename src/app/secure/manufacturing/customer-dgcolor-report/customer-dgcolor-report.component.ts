@@ -144,12 +144,14 @@ export class CustomerDGColorReportComponent implements OnInit {
             this.rgbCodeOption1 = this.receipeOptionData1[0].rgbCode;
             if (this.receipeOptionData1 && this.receipeOptionData1[0].matamerismByDataColor && this.receipeOptionData1[0].matamerismByDataColor != null && this.receipeOptionData1[0].matamerismByDataColor != undefined) {
               this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -6);
-              if (data.table1[0].lightSourceSecondary == '') {
-                this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -20);
-              }
+              debugger
               if (data.table1[0].lightSourceTertiary == '') {
                 this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -13);
               }
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric1 = this.receipeOptionData1[0].matamerismByDataColor.slice(0, -20);
+              }
+
             }
             this.PredictionRemarkOp1 = this.receipeOptionData1[0].remarks;
           }
@@ -173,12 +175,13 @@ export class CustomerDGColorReportComponent implements OnInit {
             this.rgbCodeOption2 = this.receipeOptionData2[0].rgbCode;
             if (this.receipeOptionData2 && this.receipeOptionData2[0].matamerismByDataColor && this.receipeOptionData2[0].matamerismByDataColor != null && this.receipeOptionData2[0].matamerismByDataColor != undefined) {
               this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -6);
-              if (data.table1[0].lightSourceSecondary == '') {
-                this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
-              }
               if (data.table1[0].lightSourceTertiary == '') {
                 this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -13);
               }
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric2 = this.receipeOptionData2[0].matamerismByDataColor.slice(0, -20);
+              }
+
             }
             this.PredictionRemarkOp2 = this.receipeOptionData2[0].remarks;
           }
@@ -202,12 +205,13 @@ export class CustomerDGColorReportComponent implements OnInit {
               this.rgbCodeOption3 = this.receipeOptionData3[0].rgbCode;
               if (this.receipeOptionData3 && this.receipeOptionData3[0].matamerismByDataColor && this.receipeOptionData3[0].matamerismByDataColor != null && this.receipeOptionData3[0].matamerismByDataColor != undefined) {
                 this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -6);
-                if (data.table1[0].lightSourceSecondary == '') {
-                  this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
-                }
                 if (data.table1[0].lightSourceTertiary == '') {
                   this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -13);
                 }
+                if (data.table1[0].lightSourceSecondary == '') {
+                  this.Metameric3 = this.receipeOptionData3[0].matamerismByDataColor.slice(0, -20);
+                }
+               
               }
               this.PredictionRemarkOp3 = this.receipeOptionData3[0].remarks;
             }
@@ -231,12 +235,13 @@ export class CustomerDGColorReportComponent implements OnInit {
             this.rgbCodeOption4 = this.receipeOptionData4[0].rgbCode;
             if (this.receipeOptionData4 && this.receipeOptionData4[0].matamerismByDataColor && this.receipeOptionData4[0].matamerismByDataColor != null && this.receipeOptionData4[0].matamerismByDataColor != undefined) {
               this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -6);
-              if (data.table1[0].lightSourceSecondary == '') {
-                this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
-              }
               if (data.table1[0].lightSourceTertiary == '') {
                 this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -13);
               }
+              if (data.table1[0].lightSourceSecondary == '') {
+                this.Metameric4 = this.receipeOptionData4[0].matamerismByDataColor.slice(0, -20);
+              }
+            
             }
             this.PredictionRemarkOp4 = this.receipeOptionData4[0].remarks;
           }
