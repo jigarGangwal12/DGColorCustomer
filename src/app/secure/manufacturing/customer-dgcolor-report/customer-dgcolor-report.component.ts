@@ -84,6 +84,10 @@ export class CustomerDGColorReportComponent implements OnInit {
   MatchingRemarkOp2: any;
   MatchingRemarkOp3: any;
   MatchingRemarkOp4: any;
+  fileUploadOp1: any;
+  fileUploadOp2: any;
+  fileUploadOp3: any;
+  fileUploadOp4: any;
 
 
   constructor(private apiSevices: ApiServicesService, private route: ActivatedRoute) { }
@@ -275,6 +279,7 @@ export class CustomerDGColorReportComponent implements OnInit {
             });
             this.rgbShadeMatching1 = this.shadeMatchingOptionData1[0].rgbHexaCode;
             this.MatchingRemarkOp1 = this.shadeMatchingOptionData1[0].remarks;
+            this.fileUploadOp1 = this.shadeMatchingOptionData1[0].fileUploadedName;
           }
         }
         else
@@ -295,6 +300,7 @@ export class CustomerDGColorReportComponent implements OnInit {
             });
             this.rgbShadeMatching2 = this.shadeMatchingOptionData2[0].rgbHexaCode;
             this.MatchingRemarkOp2 = this.shadeMatchingOptionData2[0].remarks;
+            this.fileUploadOp2 = this.shadeMatchingOptionData2[0].fileUploadedName;
           }
         }
         else
@@ -313,6 +319,7 @@ export class CustomerDGColorReportComponent implements OnInit {
             });
             this.rgbShadeMatching3 = this.shadeMatchingOptionData3[0].rgbHexaCode;
             this.MatchingRemarkOp3 = this.shadeMatchingOptionData3[0].remarks;
+            this.fileUploadOp3 = this.shadeMatchingOptionData3[0].fileUploadedName;
           }
         }
         else
@@ -331,6 +338,7 @@ export class CustomerDGColorReportComponent implements OnInit {
             });
             this.rgbShadeMatching4 = this.shadeMatchingOptionData4[0].rgbHexaCode;
             this.MatchingRemarkOp4 = this.shadeMatchingOptionData4[0].remarks;
+            this.fileUploadOp4 = this.shadeMatchingOptionData4[0].fileUploadedName;
           }
         }
         else
@@ -387,5 +395,11 @@ export class CustomerDGColorReportComponent implements OnInit {
   remarkPopupClose(event: any) {
     this.Remarks = '';
     this.remarkPopupVisible = false;
+  }
+
+  viewPDF(fileUpload: any){
+    if(fileUpload){
+      window.open('http://219.65.56.59:8595/api/DGColorDocument/'+fileUpload);
+    }
   }
 }
